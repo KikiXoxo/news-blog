@@ -95,3 +95,126 @@ const generateTrending = function () {
     });
 };
 generateTrending();
+
+// CATEGORIES GENERATION
+const generateCaterogies = function () {
+  const url = 'https://newsapi.org/v2/sources';
+
+  fetch(url, {
+    headers: {
+      'X-Api-Key': apiKey,
+    },
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      categoriesArray = Array.from(
+        new Set(data.sources.map(source => source.category))
+      );
+      console.log(categoriesArray);
+
+      // Display only first 4
+      const limitedCategories = categoriesArray.slice(1, 5);
+      console.log(limitedCategories);
+
+      limitedCategories.forEach((cat, i) => {
+        const categoriesItem = document.createElement('div');
+        categoriesItem.classList.add('categories__item');
+
+        categoriesItem.innerHTML = `
+        <a href="#">
+          <div class="categories__item__content flex flex--column flex--column--center">
+            <div class="categories__item__header">
+              <h3>${cat}</h3>
+            </div>
+            <div class="img--container img--container--1">
+              <img class="" src="img/categories/${cat}.jpg" alt="category">
+            </div>
+          </div>
+        </a>
+        `;
+
+        if (i % 2 === 1)
+          categoriesItem
+            .querySelector('.categories__item__content')
+            .classList.add('flex--reverse');
+
+        categories.appendChild(categoriesItem);
+      });
+
+      // DYNAMICALLY CREATE CATEGORIES - A lot did not have img urls (showed null), so commenting them out
+      // console.log(categoriesArray);
+      // categoriesArray.forEach(cat => {
+      //   const newsCategory = document.createElement('div');
+      //   newsCategory.classList.add(`${cat}`, 'category', 'news__content');
+
+      //   fetch(
+      //     `https://newsapi.org/v2/top-headlines?category=${cat}&pageSize=6`,
+      //     {
+      //       headers: {
+      //         'X-Api-Key': apiKey,
+      //       },
+      //     }
+      //   )
+      //     .then(res => {
+      //       if (!res.ok) {
+      //         throw new Error('Network response was not ok');
+      //       }
+      //       return res.json();
+      //     })
+      //     .then(data => {
+      //       console.log(data.articles);
+
+      //       data.articles.forEach(article => {
+      //         const newsItem = document.createElement('div');
+      //         newsItem.classList.add('news__item');
+
+      //         const formattedDate = formatDate(article.publishedAt);
+      //         const formattedDescription =
+      //           article.description && article.description.length > 110
+      //             ? article.description.slice(0, 110) + '...'
+      //             : article.description;
+      //         const formattedTitle =
+      //           article.title && article.title.length > 80
+      //             ? article.title.slice(0, 80) + '...'
+      //             : article.title;
+
+      //         if (article.urlToImage) {
+      //           newsItem.innerHTML = `
+      //     <a href="#">
+      //       <div class="news__item__content">
+      //         <div class="img--container">
+      //           <img class="" src="${article.urlToImage}" alt="${article.title}">
+      //         </div>
+      //         <div class="flex--column flex--column--left">
+      //           <h3>${formattedTitle}</h3>
+      //           <p class="description">${formattedDescription}</p>
+      //           <p class="subscript"><i class="fa-solid fa-user"></i> ${article.author}</p>
+      //           <p class="subscript"><i class="fa-regular fa-calendar-days"></i> ${formattedDate}</p>
+      //         </div>
+      //       </div>
+      //     </a>`;
+
+      //           newsCategory.appendChild(newsItem);
+      //         }
+      //       });
+      //     })
+      //     .catch(error => {
+      //       console.error(
+      //         `Error fetching data for category ${category}:`,
+      //         error
+      //       );
+      //     });
+
+      //   allCategories.appendChild(newsCategory);
+      // });
+    })
+    .catch(error => {
+      console.error('There was a problem fetching the categories:', error);
+    });
+};
+generateCaterogies();
