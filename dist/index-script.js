@@ -7,7 +7,7 @@ const allCategories = document.querySelector('.all__categories');
 const searchNewsInput = document.querySelector('#searchInput');
 const newsSuggestionsContainer = document.querySelector('#suggestions');
 const newsErrorMessage = document.querySelector('.error-message');
-// const apiKey = '6e8162eedc7a465bb22620a3bdc25d8a';
+const apiKey = '6e8162eedc7a465bb22620a3bdc25d8a';
 let trendingArticles = [];
 let categoriesArray;
 
