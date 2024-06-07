@@ -218,3 +218,102 @@ const generateCaterogies = function () {
     });
 };
 generateCaterogies();
+
+// SEARCH FUNCTIONALITY
+const searchFunc = function () {
+  const debounce = (func, delay) => {
+    let debounceTimeout;
+
+    return function (...args) {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => func.apply(this, args), delay);
+    };
+  };
+
+  const showNewsSuggestions = function (articles) {
+    newsSuggestionsContainer.innerHTML = ''; // Clear previous suggestions
+
+    if (articles.length > 0) {
+      articles.forEach((article, index) => {
+        const link = document.createElement('a');
+        link.classList.add('suggestion');
+        link.textContent = article.title;
+        link.href = `selectednews.html?title=${encodeURIComponent(
+          article.title
+        )}&author=${encodeURIComponent(
+          article.author
+        )}&description=${encodeURIComponent(
+          article.description
+        )}&date=${encodeURIComponent(
+          article.publishedAt
+        )}&imageUrl=${encodeURIComponent(
+          article.urlToImage
+        )}&content=${encodeURIComponent(article.content)}`;
+        link.target = '_blank'; // redirect to new page
+
+        link.addEventListener('click', () => {
+          searchNewsInput.value = article.title;
+          newsSuggestionsContainer.style.display = 'none';
+        });
+
+        newsSuggestionsContainer.appendChild(link);
+      });
+
+      newsSuggestionsContainer.style.display = 'block';
+    } else {
+      newsSuggestionsContainer.style.display = 'none';
+    }
+  };
+
+  // Search articles
+  const searchArticles = function (query) {
+    if (query.length === 0) {
+      newsSuggestionsContainer.innerHTML = '';
+      newsSuggestionsContainer.style.display = 'none';
+      newsErrorMessage.style.display = 'none';
+      return;
+    }
+
+    newsErrorMessage.style.display = 'none'; // Hide message while fetching
+
+    const filteredArticles = trendingArticles.filter(
+      article =>
+        article.title.toLowerCase().includes(query.toLowerCase()) ||
+        (article.description &&
+          article.description.toLowerCase().includes(query.toLowerCase()))
+    );
+
+    setTimeout(() => {
+      showNewsSuggestions(filteredArticles);
+    }, 500);
+  };
+
+  // Debounced search function
+  const debouncedSearchArticles = debounce(searchArticles, 500);
+
+  // Search input events
+  searchNewsInput.addEventListener('input', function () {
+    const query = searchNewsInput.value.trim();
+    debouncedSearchArticles(query);
+  });
+
+  searchNewsInput.addEventListener('focus', function () {
+    container.classList.add('top-aligned');
+  });
+
+  searchNewsInput.addEventListener('blur', function () {
+    setTimeout(() => container.classList.remove('top-aligned'), 300);
+  });
+
+  // Click outside search input
+  document.addEventListener('click', event => {
+    if (
+      !searchNewsInput.contains(event.target) &&
+      !newsSuggestionsContainer.contains(event.target)
+    ) {
+      newsSuggestionsContainer.innerHTML = '';
+      newsSuggestionsContainer.style.display = 'none';
+    }
+  });
+};
+searchFunc();
