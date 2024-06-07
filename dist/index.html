@@ -6,7 +6,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Ruthie&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Ruthie&display=swap"
       rel="stylesheet"
     />
     <link
@@ -16,8 +16,72 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <link rel="stylesheet" href="css/style.css" />
     <title>News Blog</title>
   </head>
 
-  <body></body>
+  <body>
+    <header>
+      <nav>
+        <div class="container container--px">
+          <div class="navbar">
+            <a href="index.html">
+              <h1 class="navbar__logo">ThePen</h1>
+            </a>
+
+            <div class="navbar__links">
+              <a href="index.html">Home</a>
+              <a href="#">Categories</a>
+              <a href="#">Trending</a>
+              <a href="#">Recent News</a>
+              <a href="#">Articles</a>
+              <a href="#">Contact Us</a>
+            </div>
+
+            <div class="navbar__search">
+              <input
+                type="text"
+                placeholder="Search..."
+                id="searchInput"
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-results">
+              <div id="suggestions"></div>
+              <p class="error-message">No results found</p>
+            </div>
+
+            <div class="navbar__mobile__icons">
+              <a class="icon icon__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+              <a class="icon icon__hamburger">
+                <i class="fa-solid fa-bars"></i>
+              </a>
+              <a class="icon icon__close">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="header__hero">
+        <div
+          class="container container--pall flex flex--column flex--column--center"
+        >
+          <h1 class="header__hero__heading">
+            Your daily dose of news, updates, and insightful articles
+          </h1>
+          <p class="header__hero__subheading">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed iure
+            quia itaque molestiae facere aspernatur. Sit eligendi illo debitis
+            nemo aspernatur autem inventore repellat ratione.
+          </p>
+          <a href="#" class="btn"
+            >See More News <i class="fa-solid fa-arrow-right-long"></i>
+          </a>
+        </div>
+      </div>
+    </header>
 </html>
