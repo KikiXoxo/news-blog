@@ -1,3 +1,7 @@
+.news__content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 
   a:hover {
     opacity: 1;
@@ -42,6 +46,27 @@
     }
   }
 }
+
+.categories {
+  &__item {
+    &__content {
+      gap: 1rem;
+    }
+    &__header {
+      height: 50px;
+      background: $colorDark;
+      color: $colorLight;
+      width: 100%;
+
+      h3 {
+        font-size: $font-lg;
+        height: 100%;
+        padding: 1rem;
+      }
+    }
+  }
+}
+
 .img--container {
   overflow: hidden;
   height: 100%;
