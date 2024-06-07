@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100..900&family=Ruthie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>News Blog</title>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <div class="container container--px">
+          <div class="navbar">
+            <a href="index.html">
+              <h1 class="navbar__logo">ThePen</h1>
+            </a>
+
+            <div class="navbar__links">
+              <a href="index.html">Home</a>
+              <a href="#">Categories</a>
+              <a href="#">Trending</a>
+              <a href="#">Recent News</a>
+              <a href="#">Articles</a>
+              <a href="#">Contact Us</a>
+            </div>
+
+            <div class="navbar__search">
+              <input
+                type="text"
+                placeholder="Search..."
+                id="searchInput"
+                autocomplete="off"
+              />
+            </div>
+            <div class="search-results">
+              <div id="suggestions"></div>
+              <p class="error-message">No results found</p>
+            </div>
+
+            <div class="navbar__mobile__icons">
+              <a class="icon icon__search">
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </a>
+              <a class="icon icon__hamburger">
+                <i class="fa-solid fa-bars"></i>
+              </a>
+              <a class="icon icon__close">
+                <i class="fa-solid fa-xmark"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container container--pall">
+        <h1 id="title"></h1>
+        <p id="author" class="subscript subscript--2"></p>
+        <p id="date" class="subscript subscript--2"></p>
+        <p id="description"></p>
+        <img id="image" src="" alt="News Image" />
+        <p id="content"></p>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container container--px">
+        <div class="footer__grid">
+          <div class="footer__grid--item">
+            <a href="index.html"><h1 class="footer__logo">ThePen</h1></a>
+            <a
+              href="https://github.com/KikiXoxo/news-blog"
+              target="_blank"
+              class="repository"
+              >VIEW REPO <i class="fa-solid fa-arrow-right-long"></i
+            ></a>
+            <div class="socials">
+              <a href="#"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#"><i class="fa-brands fa-youtube"></i></a>
+              <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+
+          <div class="footer__grid--item">
+            <a href="#">About Us</a>
+            <a href="#">Advertising</a>
+            <a href="#">Careers</a>
+            <a href="#">Newsletters</a>
+          </div>
+
+          <div class="footer__grid--item">
+            <a href="#">Archives</a>
+            <a href="#">Subscriptions</a>
+            <a href="#">Customer Service</a>
+            <a href="#">Cookie Policy</a>
+          </div>
+
+          <div class="footer__grid--item">
+            <a href="#">Guides</a>
+            <a href="#">Podcasts</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms os Service</a>
+          </div>
+
+          <div class="footer__grid--item copyright">
+            <p class="copyright__text">&copy; 2024 ThePen Media</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="selectednews-script.js"></script>
+  </body>
+</html>
